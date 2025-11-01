@@ -1,4 +1,4 @@
-export interface UserData {
+export interface ItemData {
   id: number;
   userId: number;
   title: string;
