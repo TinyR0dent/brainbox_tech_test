@@ -17,6 +17,7 @@ module.exports = {
     "^@hooks/(.*)$": "<rootDir>/hooks/$1",
     "^@types/(.*)$": "<rootDir>/types/$1",
     "^@/(.*)$": "<rootDir>/$1",
+    "^@mocks/(.*)$": "<rootDir>/__mocks__/$1",
     "react-native-gesture-handler":
       "<rootDir>/__mocks__/react-native-gesture-handler.js",
   },

@@ -1,5 +1,5 @@
 import { RetryButton } from "@/components/RetryButton";
-import { render } from "@testing-library/react-native";
+import { fireEvent, render } from "@testing-library/react-native";
 
 describe("<RetryButton/>", () => {
   it("renders correctly and responds to press", () => {
@@ -14,7 +14,7 @@ describe("<RetryButton/>", () => {
     const buttonText = getByText("Retry");
     expect(buttonText).toBeTruthy();
 
-    button.props.onPress();
+    fireEvent.press(button);
     expect(onPressMock).toHaveBeenCalledTimes(1);
   });
 });

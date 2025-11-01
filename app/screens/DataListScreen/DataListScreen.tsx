@@ -18,21 +18,20 @@ export const DataListScreen = () => {
   const [refreshing, setRefreshing] = useState(false);
   // I used custom hooks to move the data fetching logic out of the component, making it reusable, and to make it easier to get states like loading and error
   const { data, loading, error } = useFetchAllData(retryKey);
-  const [filteredData, setFilteredData] = useState(data);
-  const navigation =
-    useNavigation<StackNavigationProp<RootStackParamList, "DataList">>();
-  const styles = useStyles();
-
-  useEffect(() => {
+  const filteredData = React.useMemo(() => {
+    if (!Array.isArray(data)) return [];
     if (searchQuery.trim() === "") {
-      setFilteredData(data);
+      return data;
     } else {
       const lowerCaseQuery = searchQuery.toLowerCase();
-      setFilteredData(
-        data.filter((item) => item.title.toLowerCase().includes(lowerCaseQuery))
+      return data.filter((item) =>
+        item.title.toLowerCase().includes(lowerCaseQuery)
       );
     }
   }, [searchQuery, data]);
+  const navigation =
+    useNavigation<StackNavigationProp<RootStackParamList, "DataList">>();
+  const styles = useStyles();
 
   const onRefresh = () => {
     setRefreshing(true);

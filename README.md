@@ -32,24 +32,22 @@
 
 ### Launch on emulator by entering 'a' into the terminal (requires an emulator running)
 
+
+## Run unit tests with:
+ `npx jest `
+
+
 # Tech test checklist:
 
 ## ~~ Fetch and display data from: https://jsonplaceholder.typicode.com/posts ~~
-
 ## ~~ Implement a search filter ~~
-
 ## ~~ Favourite toggle ~~
-
 ## ~~ Simple details screen ~~
-
 ## ~~ Error & loading states ~~
 
 ## Bonus checklist:
 
 ## ~~ Typescript ~~
-
 ## ~~ Unit Tests (Jest) ~~
-
 ## Seperate API Service File - (I was happy to leave it as just the hooks)
-
 ## ~~ Pull-to-refresh on list ~~
