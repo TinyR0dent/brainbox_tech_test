@@ -16,6 +16,7 @@ export const DataListScreen = () => {
   const [retryKey, setRetryKey] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [refreshing, setRefreshing] = useState(false);
+  // I used custom hooks to move the data fetching logic out of the component, making it reusable, and to make it easier to get states like loading and error
   const { data, loading, error } = useFetchAllData(retryKey);
   const [filteredData, setFilteredData] = useState(data);
   const navigation =

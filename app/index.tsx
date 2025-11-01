@@ -13,6 +13,7 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
+    // Safe area provider because new iphones with dynamic island, and some phones with notches sometimes don't render properly without it
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator

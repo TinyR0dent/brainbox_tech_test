@@ -13,6 +13,8 @@ interface DataListItemProps {
 export const DataListItem = ({ item, onPress }: DataListItemProps) => {
   const [isFavored, setIsFavored] = useState(false);
   const styles = useStyles();
+
+  // Added animation to improve user interaction feel
   const animation = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
