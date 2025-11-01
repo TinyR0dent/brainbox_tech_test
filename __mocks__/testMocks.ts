@@ -18,9 +18,11 @@ export const mockUseNavigation = jest.fn(() => ({
 jest.mock("@/hooks/useFetchAllData", () => ({
   useFetchAllData: (retryKey?: number) => mockUseFetchAllData(retryKey),
 }));
+
 jest.mock("@/hooks/useFetchItemData", () => ({
   useFetchItemData: () => mockUseFetchItemData(),
 }));
+
 jest.mock("@react-navigation/native", () => {
   const actual = jest.requireActual("@react-navigation/native");
   return {

@@ -1,5 +1,6 @@
-const React = require("react");
-const View = (props) => React.createElement("View", props, props.children);
+const { createElement } = require("react");
+
+const View = (props) => createElement("View", props, props.children);
 
 module.exports = {
   install: jest.fn(),

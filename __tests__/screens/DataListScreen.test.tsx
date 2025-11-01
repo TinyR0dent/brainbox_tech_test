@@ -4,7 +4,7 @@ import { mockUseFetchAllData } from "@mocks/testMocks";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { fireEvent, render, waitFor } from "@testing-library/react-native";
-import React from "react";
+import React, { ReactElement } from "react";
 
 describe("DataListScreen", () => {
   beforeEach(() => {
@@ -88,7 +88,7 @@ describe("DataListScreen", () => {
       }));
   });
 
-  function renderWithNavigation(ui: React.ReactElement) {
+  function renderWithNavigation(ui: ReactElement) {
     const Stack = createStackNavigator();
     return render(
       <NavigationContainer>

@@ -1,10 +1,10 @@
-import React, { JSX } from "react";
+import React, { JSX, ReactNode } from "react";
 import { View, ViewProps, ViewStyle } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useStyles } from "./styles";
 
 interface ScreenContainerProps extends ViewProps {
-  children: React.ReactNode;
+  children: ReactNode;
   center?: boolean;
   style?: ViewStyle;
 }

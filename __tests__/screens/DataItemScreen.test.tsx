@@ -8,9 +8,9 @@ import { DataItemScreen } from "@/app/screens/DataItemScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { fireEvent, render } from "@testing-library/react-native";
-import { act } from "react";
+import { act, ReactElement } from "react";
 
-function renderWithNavigation(ui: React.ReactElement) {
+function renderWithNavigation(ui: ReactElement) {
   const Stack = createStackNavigator();
   return render(
     <NavigationContainer>
