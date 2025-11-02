@@ -4,7 +4,7 @@ const defaultContainer: ViewStyle = {
   padding: 8,
   borderRadius: 10,
   paddingRight: 35,
-  backgroundColor: "#e2e6e9ff",
+  backgroundColor: "#FFFF",
 };
 export const useStyles = () => {
   const unFavoredContainer: ViewStyle = {
@@ -13,7 +13,7 @@ export const useStyles = () => {
 
   const favoredContainer: ViewStyle = {
     ...defaultContainer,
-    backgroundColor: "#a7aff1ff",
+    backgroundColor: "#6ab6aa",
   };
 
   const favButton: ViewStyle = {

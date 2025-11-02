@@ -64,9 +64,7 @@ export const DataItemScreen = () => {
       <Typography variant="largeHeader" center>
         {data.title}
       </Typography>
-      <Typography variant="largeBody" center>
-        {data.body}
-      </Typography>
+      <Typography variant="largeBody">{data.body}</Typography>
     </ScreenContainer>
   );
 };

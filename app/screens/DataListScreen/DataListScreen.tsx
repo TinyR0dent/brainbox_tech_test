@@ -54,6 +54,9 @@ export const DataListScreen = () => {
   if (error) {
     return (
       <ScreenContainer center style={styles.errorContainer}>
+        <Typography variant="largeHeader" center>
+          🧐
+        </Typography>
         <Typography variant="largeError">Error: {error}</Typography>
         <Typography variant="largeBody">
           Please check your connection and try again.
@@ -84,6 +87,7 @@ export const DataListScreen = () => {
             <DataListItem
               key={item.id}
               item={item}
+              searchQuery={searchQuery}
               onPress={() =>
                 navigation.navigate("DataItem", { id: String(item.id) })
               }

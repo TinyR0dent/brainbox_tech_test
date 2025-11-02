@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput, View } from "react-native";
+import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useStyles } from "./styles";
 
 interface SearchFieldProps {
@@ -20,6 +20,15 @@ export const SearchField = ({
         placeholder="Search..."
         style={styles.inputField}
       />
+      {searchQuery.length > 0 && (
+        <TouchableOpacity
+          onPress={() => setSearchQuery("")}
+          accessibilityLabel="Clear search"
+          style={styles.clearButton}
+        >
+          <Text style={styles.clearButtonText}>×</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

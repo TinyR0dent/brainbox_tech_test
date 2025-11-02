@@ -1,20 +1,31 @@
 import { ItemData } from "@/types/ItemData";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useEffect, useRef, useState } from "react";
-import { Animated, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  Animated,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { Typography } from "../Typography/Typography";
 import { useStyles } from "./styles";
 
 interface DataListItemProps {
   item: ItemData;
+  searchQuery: string;
   onPress?: () => void;
 }
 
-export const DataListItem = ({ item, onPress }: DataListItemProps) => {
+export const DataListItem = ({
+  item,
+  searchQuery,
+  onPress,
+}: DataListItemProps) => {
   const [isFavored, setIsFavored] = useState(false);
   const styles = useStyles();
 
-  // Added animation to improve user interaction feel
+  // Added animation to improve UX
   const animation = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -29,6 +40,35 @@ export const DataListItem = ({ item, onPress }: DataListItemProps) => {
     inputRange: [0, 1],
     outputRange: [0, 1],
   });
+
+  // I wanted to hightlight the search query in the title for better UX
+  const getHighlightedTitle = () => {
+    if (!searchQuery)
+      return <Typography variant="header">{item.title}</Typography>;
+    const query = searchQuery.trim();
+    if (!query) return <Typography variant="header">{item.title}</Typography>;
+    const regex = new RegExp(
+      `(${query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`,
+      "ig"
+    );
+    const parts = item.title.split(regex);
+    return (
+      <Text>
+        {parts.map((part, i) =>
+          regex.test(part) ? (
+            <Text
+              key={i}
+              style={{ backgroundColor: "#ffe066", fontWeight: "bold" }}
+            >
+              {part}
+            </Text>
+          ) : (
+            <Text key={i}>{part}</Text>
+          )
+        )}
+      </Text>
+    );
+  };
 
   return (
     <View style={styles.unFavoredContainer}>
@@ -62,7 +102,7 @@ export const DataListItem = ({ item, onPress }: DataListItemProps) => {
         <MaterialIcons
           name={isFavored ? "star" : "star-border"}
           size={22}
-          color={isFavored ? "#FFD600" : "#888"}
+          color={isFavored ? "#FFD600" : "#6ab6aa"}
         />
       </TouchableOpacity>
       <TouchableOpacity
@@ -71,7 +111,7 @@ export const DataListItem = ({ item, onPress }: DataListItemProps) => {
         style={{ flex: 1 }}
         disabled={!onPress}
       >
-        <Typography variant="header">{item.title}</Typography>
+        {getHighlightedTitle()}
         <Typography variant="body" numberOfLines={2} ellipsizeMode="tail">
           {item.body}
         </Typography>
